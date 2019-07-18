@@ -1,0 +1,6 @@
+.nav {
+    display: flex;
+    background: #209915;
+    justify-content: space-around;
+}
+
