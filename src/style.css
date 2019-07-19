@@ -37,3 +37,10 @@ h1 {
   border-radius: 7px;
   margin-left: 50px;
 }
+
+img{
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+}
