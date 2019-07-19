@@ -1,15 +1,15 @@
 .start {
-    background-image: url("https://cdn.pixabay.com/photo/2017/06/28/12/16/frame-2450415_960_720.jpg");
-    background-attachment: fixed;
-    background-position: center center;
-    background-size: cover;
-    align-self: initial;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-  }
+  background-image: url("https://cdn.pixabay.com/photo/2017/06/28/12/16/frame-2450415_960_720.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  align-self: initial;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
 
 h1 {
   font-family: "Bad Script", cursive;
@@ -18,9 +18,13 @@ h1 {
 }
 
 .nav {
-    display: flex;
-   /* background: #209915;*/
-    justify-content: space-around;
+  display: flex;
+  /* background: #209915;*/
+  justify-content: space-around;
+}
+
+#info {
+  overflow-wrap: break-word;
 }
 
 #info {
