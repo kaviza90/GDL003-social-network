@@ -23,12 +23,19 @@ h1 {
   justify-content: space-around;
 }
 
-.info {
-  display: flex;
-  text-align: center;
-  margin: 10px;
+#info {
+  overflow-wrap: break-word;
 }
 
 #info {
-  overflow-wrap: break-word;
+    display: flex;
+    text-align: center;
+    
+}
+
+#comentarios{
+  border: 2px solid rgb(81, 68, 202);
+  border-radius: 7px;
+  margin-left: 50px;
+
 }
