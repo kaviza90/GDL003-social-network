@@ -29,6 +29,11 @@ h1 {
     
 }
 
+.boton{
+  float: right;
+  margin-right: 70px;
+}
+
 #comentarios{
   border: 2px solid rgb(81, 68, 202);
   border-radius: 7px;
