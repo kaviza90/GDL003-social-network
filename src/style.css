@@ -27,12 +27,6 @@ h1 {
   overflow-wrap: break-word;
 }
 
-#info {
-    display: flex;
-    text-align: center;
-    
-}
-
 .boton{
   float: right;
   margin-right: 70px;
@@ -42,5 +36,4 @@ h1 {
   border: 2px solid rgb(81, 68, 202);
   border-radius: 7px;
   margin-left: 50px;
-
 }
