@@ -27,15 +27,8 @@ h1 {
   overflow-wrap: break-word;
 }
 
-#info {
-    display: flex;
-    text-align: center;
-    
-}
-
-#comentarios{
+#comentarios {
   border: 2px solid rgb(81, 68, 202);
   border-radius: 7px;
   margin-left: 50px;
-
 }
