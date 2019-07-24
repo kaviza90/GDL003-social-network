@@ -54,6 +54,7 @@ function handleSignUp() {
 }
 
 //Para cerrar la sesión de un usuario, llama a signOut de la siguiente manera
+
 firebase
   .auth()
   .signOut()
@@ -63,3 +64,12 @@ firebase
   .catch(function(error) {
     // An error happened.
   });
+
+firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}).catch(function(error) {
+  // An error happened.
+});
+
+// comentario
+
