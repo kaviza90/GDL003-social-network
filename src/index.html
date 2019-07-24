@@ -18,15 +18,22 @@
     <title>Red Sorora</title>
   </head>
   <body class="start">
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+  <script defer src="./init-firebase.js"></script>
     <header>
       <div class="nav">
         <button class="fas fa-align-justify fa-2x"></button>
-        <button class="far fa-user fa-2x"></button>
+        <button class="far fa-user fa-2x" id="register_user"></button>
         <button class="fas fa-comment fa-2x"></button>
         <button class="fas fa-search fa-2x"></button>
         <button class="fas fa-arrow-up fa-2x"></button>
       </div>
-      <img src="img/logo.png">
+      <img src="img/Red-01.png" />
     </header>
     <div id="info">
       <p>
@@ -50,8 +57,20 @@
       <div id="fb-root"></div>
       <div id="fb-root"></div>
       <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.3&appId=498063954299569&autoLogAppEvents=1"></script>
-      <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+      <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>      
     </div>
-    <script src="index.js"></script>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="register_email">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="register_password">
+        <button id="register_button">Register</button>
+      </div>
+    </div>
+    <script defer src="index.js"></script>
   </body>
 </html>
