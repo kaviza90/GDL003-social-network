@@ -1,60 +1,59 @@
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+// Get the modal
+var modal = document.getElementById("myModal");
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#config-web-app -->
+// Get the button that opens the modal
+var btn = document.getElementById("register_user");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+//Add event listener to the register button on modal
+let register_button = document.getElementById('register_button');
+register_button.addEventListener('click',handleSignUp);
 
 
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDF1XiDAijYoqmcfmzKIs9EAb2DkOHIrY8",
-    authDomain: "red-sorora-7c6fc.firebaseapp.com",
-    databaseURL: "https://red-sorora-7c6fc.firebaseio.com",
-    projectId: "red-sorora-7c6fc",
-    storageBucket: "",
-    messagingSenderId: "210204876902",
-    appId: "1:210204876902:web:739809e95c8f138c"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-//Aunthentication Facebook
-  var provider = new firebase.auth.FacebookAuthProvider();
-
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    var token = result.credential.accessToken;
-    // The signed-in user info.
-    var user = result.user;
-    // ...
-  }).catch(function(error) {
+/**
+  * Handles the sign up button press.
+*/
+function handleSignUp() {
+  var email = document.getElementById('register_email').value;
+  var password = document.getElementById('register_password').value;
+  if (email.length < 4) {
+    alert('Please enter an email address.');
+    return;
+  }
+  if (password.length < 4) {
+    alert('Please enter a password.');
+    return;
+  }  
+  //Para acceder con una ventana emergente, llama a signInWithPopup
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
     // ...
   });
+}
 
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{498063954299569}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{v3.3}'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-
+//Para cerrar la sesión de un usuario, llama a signOut de la siguiente manera
+firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}).catch(function(error) {
+  // An error happened.
+});
