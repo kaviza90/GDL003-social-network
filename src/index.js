@@ -54,10 +54,6 @@ function handleSignUp() {
 }
 
 //Para cerrar la sesión de un usuario, llama a signOut de la siguiente manera
-<<<<<<< HEAD
-=======
-
->>>>>>> 24229b6a92c6c02b60c40d38fec05e55d37f1252
 firebase
   .auth()
   .signOut()
@@ -68,15 +64,14 @@ firebase
     // An error happened.
   });
 
-<<<<<<< HEAD
-// comentario
-=======
-firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-}).catch(function(error) {
-  // An error happened.
-});
+firebase
+  .auth()
+  .signOut()
+  .then(function() {
+    // Sign-out successful.
+  })
+  .catch(function(error) {
+    // An error happened.
+  });
 
 // comentario
-
->>>>>>> 24229b6a92c6c02b60c40d38fec05e55d37f1252
