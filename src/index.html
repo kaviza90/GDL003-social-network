@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-      integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Bad+Script|Courgette|Lobster|Oleo+Script&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+      integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script|Courgette|Lobster|Oleo+Script&display=swap"
+      rel="stylesheet"/>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -18,23 +12,22 @@
     <title>Red Sorora</title>
   </head>
   <body class="start">
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"
-    ></script>
-    <!-- Add Firebase products that you want to use -->
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"
-    ></script>
-    <script defer src="./init-firebase.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script defer src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <!-- Add Firebase products that you want to use -->
+  <script defer src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+  <!--<script defer src="/__/firebase/6.3.1/firebase-database.js"></script>-->
+  <script defer src="./init-firebase.js"></script>
     <header>
       <div class="nav">
         <button class="fas fa-align-justify fa-2x"></button>
-        <button class="far fa-user fa-2x" id="register_user"></button>
+        <button class="far fa-user fa-2x" id="registerUser"></button>
         <button class="fas fa-comment fa-2x"></button>
         <button class="fas fa-search fa-2x"></button>
         <button class="fas fa-arrow-up fa-2x"></button>
@@ -57,38 +50,24 @@
         diversas partes del mundo con más fuerza que antes.
       </p>
     </div>
-
-    <textarea id="comentarios" rows="10" cols="150"></textarea>
-
+    <textarea id="comentarios" rows="10" cols="150">Cuentanos como te sientes...</textarea>
     <div id="Publicar">
-      <button id="Public" class="boton">Publicar</button>
-      <div id="fb-root"></div>
-      <div id="fb-root"></div>
-      <script
-        async
-        defer
-        crossorigin="anonymous"
-        src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.3&appId=498063954299569&autoLogAppEvents=1"
-      ></script>
-      <div
-        class="fb-login-button"
-        data-width=""
-        data-size="large"
-        data-button-type="login_with"
-        data-auto-logout-link="false"
-        data-use-continue-as="false"
-      ></div>
+    <button id="Public" class="boton">Publicar</button>
     </div>
     <!-- The Modal -->
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="register_email" />
-        <label for="password">Password</label>
-        <input type="password" name="password" id="register_password" />
-        <button id="register_button">Register</button>
+        <form id="userForm">
+          <label for="userEmail">Email:</label>
+          <input id="userEmail" type="email"  placeholder="email@example.com" title="Introduce tu email" autocomplete="username">
+          <label for="userPassword">Password</label>
+          <input type="password" id="userPassword" autocomplete="current-password" minlength="6" required>
+          <button type="submit" id="login">Log in</button>
+          <button type="submit" id="logout">Log Out</button>
+          <button type="submit" id="register">Register</button>
+        </form>
       </div>
     </div>
     <script defer src="index.js"></script>

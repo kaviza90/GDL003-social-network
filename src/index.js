@@ -2,7 +2,7 @@
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("register_user");
+var btn = document.getElementById("registerUser");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -23,53 +23,81 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };
-//Add event listener to the register button on modal
-let register_button = document.getElementById("register_button");
-register_button.addEventListener("click", handleSignUp);
 
-/**
- * Handles the sign up button press.
- */
-function handleSignUp() {
-  var email = document.getElementById("register_email").value;
-  var password = document.getElementById("register_password").value;
-  if (email.length < 4) {
-    alert("Please enter an email address.");
-    return;
-  }
-  if (password.length < 4) {
-    alert("Please enter a password.");
-    return;
-  }
-  //Para acceder con una ventana emergente, llama a signInWithPopup
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-    });
+//Add event listener to the register button on modal
+var btnRegister = document.getElementById("register");
+//Get user information 
+var txtEmail = document.getElementById("userEmail");
+var txtPassword = document.getElementById("userPassword");
+var btnLogin = document.getElementById("login");
+var btnLogout = document.getElementById("logout");
+
+//var auth = firebase.auth();
+
+
+//Function Login
+const loginUser = () => {
+  var email = txtEmail.value;
+  var password = txtPassword.value;
+  firebase.auth().signInWithEmailAndPassword(email, password)
+  .then(function() {
+    console.log("sesion iniciada");
+  })
+  .catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    //console.log("Necesitas Registrarte primero");
+    console.log(errorMessage);
+    console.log(errorCode);
+  });
 }
 
-//Para cerrar la sesión de un usuario, llama a signOut de la siguiente manera
+//Login
+btnLogin.addEventListener("click",()=> {loginUser()});
 
-firebase
-  .auth()
-  .signOut()
+/* Register if the user is new.*/
+const RegisterNew = () => {
+  var email = txtEmail.value;
+  var password = txtPassword.value;
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then(function() {
+    console.log("Registro exitoso");
+  })
+  .catch( function (error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorMessage);
+    console.log(errorCode);
+  });
+}
+
+btnLogin.addEventListener("click",()=> {RegisterNew()});
+//btnRegister.addEventListener("click", RegisterNew);
+
+//Logout Cerrar sesión de un usuario
+const logoutUser = () => {
+  firebase.auth().signOut()
   .then(function() {
     // Sign-out successful.
   })
   .catch(function(error) {
     // An error happened.
   });
+}
 
-firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-}).catch(function(error) {
-  // An error happened.
-});
 
-// comentario
+//btnLogout.addEventListener("click", logoutUser);
+btnLogin.addEventListener("click",()=> {logoutUser()});
 
+//Detectar si ya esta Logeado
+/*firebase.auth().onAuthStateChanged( user =>{
+  if (user){
+    console.log(user);
+    console.log("Ha sido registrado exitosamente");
+    //btnLogout.style.display = "block";
+  } else {
+    console.log("No estas Registrado");
+    btnLogout.style.display = "none";
+  }
+})
+*/
