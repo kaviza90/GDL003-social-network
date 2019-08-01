@@ -1,75 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-      integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"/>
-    <link href="https://fonts.googleapis.com/css?family=Bad+Script|Courgette|Lobster|Oleo+Script&display=swap"
-      rel="stylesheet"/>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Red Sorora</title>
-  </head>
-  <body class="start">
-  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script defer src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
-  
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-       https://firebase.google.com/docs/web/setup#config-web-app -->
-
-  <!-- Add Firebase products that you want to use -->
-  <script defer src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
-  <!--<script defer src="/__/firebase/6.3.1/firebase-database.js"></script>-->
-  <script defer src="./init-firebase.js"></script>
-    <header>
-      <div class="nav">
-        <button class="fas fa-align-justify fa-2x"></button>
-        <button class="far fa-user fa-2x" id="registerUser"></button>
-        <button class="fas fa-comment fa-2x"></button>
-        <button class="fas fa-search fa-2x"></button>
-        <button class="fas fa-arrow-up fa-2x"></button>
-      </div>
-      <img src="img/logo.png" />
-    </header>
-    <div id="info">
-      <p>
-        La palabra feminismo está plagada de connotaciones negativas acerca de
-        la verdadera causa del movimiento.¿El antítodo para los
-        prejuicios?Información <br />
-        No eres una damisela en peligro, pero tienes derecho a ser una princesa
-        si eso es lo que quieres; puedes decidir sobre tu cuerpo, sexualidad,
-        ropa, pareja, trabajo y la manera en que quieres vivir,<br />
-        como cualquier otro ser humano, más allá de su género. ¿En realidad
-        estás consciente de ello? Y más importante, ¿lo estás de cómo llegaste a
-        gozar de estos derechos? <br />
-        Por mujeres feministas que han defendido la causa desde hace décadas y
-        que, gracias a Internet, hoy día la lucha es difundida y peleada desde
-        diversas partes del mundo con más fuerza que antes.
-      </p>
-    </div>
-    <textarea id="comentarios" rows="10" cols="150">Cuentanos como te sientes...</textarea>
-    <div id="Publicar">
-    <button id="Public" class="boton">Publicar</button>
-    </div>
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        
-          <label for="userEmail">Email:</label>
-          <input id="userEmail" type="email"  placeholder="email@example.com" title="Introduce tu email" autocomplete="username">
-          <label for="userPassword">Password</label>
-          <input type="password" id="userPassword" autocomplete="current-password" minlength="6" required>
-          <button type="submit" id="login">Log in</button>
-          <button type="submit" id="logout">Log Out</button>
-          <button type="submit" id="register">Register</button>
-        
-      </div>
-    </div>
-    <script defer src="index.js"></script>
-  </body>
+ <head>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+     integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous"/>
+   <link href="https://fonts.googleapis.com/css?family=Bad+Script%7CCourgette%7CLobster%7COleo+Script&display=swap"
+     rel="stylesheet"/>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+   <link rel="stylesheet" href="style.css" />
+   <title>Red Sorora</title>
+ </head>
+ <body class="start">
+ <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+ <script defer src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+ <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#config-web-app -->
+ <!-- Add Firebase products that you want to use -->
+ <script defer src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+ <script defer src="./init-firebase.js"></script>
+   <header>
+     <div class="nav">
+       <button class="fas fa-align-justify fa-2x"></button>
+       <button class="far fa-user fa-2x" id="registerUser"></button>
+       <button class="fas fa-comment fa-2x"></button>
+       <button class="fas fa-search fa-2x"></button>
+       <button class="fas fa-arrow-up fa-2x"></button>
+     </div>
+     <img src="img/logo.png" />
+   </header>
+   <div id="info">
+     <p>
+       La palabra feminismo está plagada de connotaciones negativas acerca de
+       la verdadera causa del movimiento.¿El antítodo para los
+       prejuicios?Información <br />
+       No eres una damisela en peligro, pero tienes derecho a ser una princesa
+       si eso es lo que quieres; puedes decidir sobre tu cuerpo, sexualidad,
+       ropa, pareja, trabajo y la manera en que quieres vivir,<br />
+       como cualquier otro ser humano, más allá de su género. ¿En realidad
+       estás consciente de ello? Y más importante, ¿lo estás de cómo llegaste a
+       gozar de estos derechos? <br />
+       Por mujeres feministas que han defendido la causa desde hace décadas y
+       que, gracias a Internet, hoy día la lucha es difundida y peleada desde
+       diversas partes del mundo con más fuerza que antes.
+     </p>
+   </div>
+   <textarea id="comentarios" rows="10" cols="150"></textarea>
+   <!-- The Modal -->
+   <div id="myModal" class="modal">
+     <!-- Modal content -->
+     <div class="modal-content">
+       <span class="close">&times;</span>
+         <label for="userEmail">Email:</label>
+         <input id="userEmail" type="email"  placeholder="email@example.com" title="Introduce tu email" autocomplete="username">
+         <label for="userPassword">Password</label>
+         <input id="userPassword" type="password"  autocomplete="current-password" minlength="6" required>
+         <button id="login">Log in</button>
+         <button id="logout">Log Out</button>
+         <button id="register">Register</button>
+     </div>
+   </div>
+<script defer src="index.js"></script>
+ </body>
 </html>
