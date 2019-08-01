@@ -29,16 +29,16 @@ window.onclick = function(event) {
 
 //Function Login
 const loginUser = () => {
- var email = txtEmail.value;
- var password = txtPassword.value;
+ const email = txtEmail.value;
+ const password = txtPassword.value;
  firebase.auth().signInWithEmailAndPassword(email, password)
  .then(function() {
-   console.log("sesion iniciada");
+   console.log("Sesion iniciada");
  })
  .catch(function(error) {
    var errorCode = error.code;
    var errorMessage = error.message;
-   //console.log("Necesitas Registrarte primero");
+   console.log("Necesitas Registrarte primero");
    console.log(errorMessage);
    console.log(errorCode);
  });
@@ -71,6 +71,19 @@ const logoutUser = () => {
    console.log("an error ocurred");
  });
 }
+
+//Detectar si ya esta Logeado
+firebase.auth().onAuthStateChanged(user =>{
+  if (user){
+    console.log(user);
+    console.log("Has iniciado sesion");
+    btnLogin.style.display = "none";
+    btnRegister.style.display = "none";
+  } else {
+    console.log("Aun no has iniciado sesion");
+    btnLogout.style.display = "none";
+  }
+});
 
 //Register
 btnRegister.addEventListener("click", RegisterNew);
