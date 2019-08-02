@@ -95,12 +95,12 @@ btnLogout.addEventListener("click", logoutUser);
 
 //Agregar Mensajes en Firebase
 const DBMessage = () => {
-    const userMessage = document.getElementById("message").value;
+    const userMessage = document.getElementById("comentarios").value;
     console.log(userMessage);
     db.ref('mensajes').push({
       mensaje : userMessage
     });
-    document.getElementById("message").value= '';
+    document.getElementById("comentarios").value= '';
  };
  document.getElementById("btnmessage").addEventListener("click", DBMessage);
 
@@ -108,7 +108,7 @@ const DBMessage = () => {
  const ready = () => {
    db.ref('mensajes').on('child_added', function(data){
     console.log(data.val());
-    document.getElementById("chat").append(`<p>${data.val().mensaje}</p> <br/>`);
+    document.getElementById("chat").append("<p>"+ data.val().mensaje +"</p> <br/>");
    });
  };
 
