@@ -108,7 +108,7 @@ const DBMessage = () => {
  const ready = () => {
    db.ref('mensajes').on('child_added', function(data){
     console.log(data.val());
-    document.getElementById("chat").append("<p>"+ data.val().mensaje +"</p> <br/>");
+    document.getElementById("chat").innerHTML += " " + `<p>${data.val().mensaje}</p> <br/>`;
    });
  };
 
