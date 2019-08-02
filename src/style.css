@@ -1,5 +1,66 @@
+/* Bordered form */
+form {
+  border: 3px solid #f1f1f1;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: rgb(179, 177, 255);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
 .start {
-  background-image: url("https://www.freepptpresentations.com/wp-content/uploads/2015/07/06-1024x512.jpg");
+  background-image: url("https://laurenconrad.com/wp-content/uploads/2016/02/flowers-desktop.jpg");
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
@@ -13,8 +74,9 @@
 
 h1 {
   font-family: "Bad Script", cursive;
-  text-shadow: 0 0 3px #ff0000, 0 0 5px #0000ff;
-  text-align: center;
+  font-size: 40px;
+  text-shadow: 0 0 3px #00e1ff, 0 0 5px #0000ff;
+  
 }
 
 .nav {
@@ -51,8 +113,8 @@ img{
   left: 0;
   top: 0;
   width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  height: 80%; /* Full height */
+  overflow: visible; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
@@ -63,7 +125,7 @@ img{
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 30%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -80,3 +142,9 @@ img{
   text-decoration: none;
   cursor: pointer;
 }
+
+.card.horizontal .card-image img {
+  width: 50%;
+  margin: auto;
+}
+

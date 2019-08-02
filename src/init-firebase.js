@@ -1,12 +1,12 @@
- //Your app's Firebase project configuration
+// Your web app's Firebase configuration
  var firebaseConfig = {
-    apiKey: "AIzaSyDF1XiDAijYoqmcfmzKIs9EAb2DkOHIrY8",
-    authDomain: "red-sorora-7c6fc.firebaseapp.com",
-    databaseURL: "https://red-sorora-7c6fc.firebaseio.com",
-    projectId: "red-sorora-7c6fc",
-    storageBucket: "",
-    messagingSenderId: "210204876902",
-    appId: "1:210204876902:web:739809e95c8f138c"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+   apiKey: "AIzaSyDXf5GUypFtGvOc_7wXygYtsP5QT-MgKxc",
+   authDomain: "redsorora-f7a37.firebaseapp.com",
+   databaseURL: "https://redsorora-f7a37.firebaseio.com",
+   projectId: "redsorora-f7a37",
+   storageBucket: "",
+   messagingSenderId: "175656874379",
+   appId: "1:175656874379:web:9b1f476186f7d82f"
+ };
+ // Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
