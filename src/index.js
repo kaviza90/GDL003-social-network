@@ -36,9 +36,15 @@ const loginUser = () => {
    console.log("Sesion iniciada");
  })
  .catch(function(error) {
+<<<<<<< HEAD
    var errorCode = error.code;
    var errorMessage = error.message;
    console.log("Necesitas Registrarte primero");
+=======
+   const errorCode = error.code;
+   const errorMessage = error.message;
+   //console.log("Necesitas Registrarte primero");
+>>>>>>> 6967e282c6fded90c7ee30ceb5f142fde3a25adc
    console.log(errorMessage);
    console.log(errorCode);
  });
