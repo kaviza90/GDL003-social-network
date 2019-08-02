@@ -20,6 +20,7 @@
       https://firebase.google.com/docs/web/setup#config-web-app -->
  <!-- Add Firebase products that you want to use -->
  <script defer src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+ <script defer src="https://www.gstatic.com/firebasejs/6.3.3/firebase-database.js"></script>
  <script defer src="./init-firebase.js"></script>
    <header>
      <div class="nav">
@@ -55,9 +56,15 @@
         <div class="card-action">
           <a href="#">This is a link</a>
         </div>
+        <textarea id="comentarios" rows="10" cols="150"></textarea>
+        <!--<input type="text" id="comentarios">-->
+        <button id="btnmessage">Comentar</button>
       </div>
     </div>
   </div>
+
+   <div id=chat>
+   </div>
    <!-- The Modal -->
    <div id="myModal" class="modal">
      <!-- Modal content -->
@@ -73,6 +80,7 @@
      </div>
    </div>
 <script defer src="index.js"></script>
+<script defer src="red.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
  </body>
 </html>
