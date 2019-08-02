@@ -29,8 +29,8 @@ window.onclick = function(event) {
 
 //Function Login
 const loginUser = () => {
-  var email = txtEmail.value;
-  var password = txtPassword.value;
+  const email = txtEmail.value;
+  const password = txtPassword.value;
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
@@ -38,8 +38,8 @@ const loginUser = () => {
       console.log("sesion iniciada");
     })
     .catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      const errorCode = error.code;
+      const errorMessage = error.message;
       //console.log("Necesitas Registrarte primero");
       console.log(errorMessage);
       console.log(errorCode);

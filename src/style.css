@@ -5,7 +5,7 @@ form {
 
 /* Set a style for all buttons */
 button {
-  background-color: rgb(99, 1, 129);
+  background-color: rgb(179, 177, 255);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -60,7 +60,7 @@ span.psw {
   }
 }
 .start {
-  background-image: url("https://aws.glamour.mx/prod/designs/v1/assets/620x430/188280.jpg");
+  background-image: url("https://laurenconrad.com/wp-content/uploads/2016/02/flowers-desktop.jpg");
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
@@ -74,8 +74,9 @@ span.psw {
 
 h1 {
   font-family: "Bad Script", cursive;
-  text-shadow: 0 0 3px #ff0000, 0 0 5px #0000ff;
-  text-align: center;
+  font-size: 40px;
+  text-shadow: 0 0 3px #00e1ff, 0 0 5px #0000ff;
+  
 }
 
 .nav {
@@ -112,8 +113,8 @@ img{
   left: 0;
   top: 0;
   width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  height: 80%; /* Full height */
+  overflow: visible; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
@@ -124,7 +125,7 @@ img{
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 30%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -141,3 +142,9 @@ img{
   text-decoration: none;
   cursor: pointer;
 }
+
+.card.horizontal .card-image img {
+  width: 50%;
+  margin: auto;
+}
+
