@@ -91,3 +91,25 @@ btnRegister.addEventListener("click", RegisterNew);
 btnLogin.addEventListener("click", loginUser);
 //LogOut
 btnLogout.addEventListener("click", logoutUser);
+
+
+//Agregar Mensajes en Firebase
+const DBMessage = () => {
+    const userMessage = document.getElementById("message").value;
+    console.log(userMessage);
+    db.ref('mensajes').push({
+      mensaje : userMessage
+    });
+    document.getElementById("message").value= '';
+ };
+ document.getElementById("btnmessage").addEventListener("click", DBMessage);
+
+ //Mostrar Datos en Pantalla HTML
+ const ready = () => {
+   db.ref('mensajes').on('child_added', function(data){
+    console.log(data.val());
+    document.getElementById("chat").append(`<p>${data.val().mensaje}</p> <br/>`);
+   });
+ };
+
+ document.addEventListener('DOMContentLoaded', ready);
