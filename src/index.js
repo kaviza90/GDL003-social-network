@@ -35,7 +35,7 @@ const loginUser = () => {
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then(function() {
-      console.log("sesion iniciada");
+      console.log("Sesion iniciada");
     })
     .catch(function(error) {
       const errorCode = error.code;
@@ -78,9 +78,44 @@ const logoutUser = () => {
     });
 };
 
+//Detectar si ya esta Logeado
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    console.log(user);
+    console.log("Has iniciado sesion");
+    btnLogin.style.display = "none";
+    btnRegister.style.display = "none";
+  } else {
+    console.log("Aun no has iniciado sesion");
+    btnLogout.style.display = "none";
+  }
+});
+
 //Register
 btnRegister.addEventListener("click", RegisterNew);
 //Login
 btnLogin.addEventListener("click", loginUser);
 //LogOut
 btnLogout.addEventListener("click", logoutUser);
+
+//Agregar Mensajes en Firebase
+const DBMessage = () => {
+  const userMessage = document.getElementById("comentarios").value;
+  console.log(userMessage);
+  db.ref("mensajes").push({
+    mensaje: userMessage
+  });
+  document.getElementById("comentarios").value = "";
+};
+document.getElementById("btnmessage").addEventListener("click", DBMessage);
+
+//Mostrar Datos en Pantalla HTML
+const ready = () => {
+  db.ref("mensajes").on("child_added", function(data) {
+    console.log(data.val());
+    document.getElementById("chat").innerHTML +=
+      " " + `<p>${data.val().mensaje}</p> <br/>`;
+  });
+};
+
+document.addEventListener("DOMContentLoaded", ready);
