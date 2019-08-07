@@ -1,3 +1,9 @@
+const btnHeart = document.getElementById("heartButton");
+
+btnHeart.addEventListener("click", () => {
+  alert("Este es un boton de corazón");
+});
+
 //Add event listener to the register button on modal
 const btnRegister = document.getElementById("register");
 //Get user information
