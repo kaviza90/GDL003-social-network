@@ -5,6 +5,7 @@ const txtEmail = document.getElementById("userEmail");
 const txtPassword = document.getElementById("userPassword");
 const btnLogin = document.getElementById("login");
 const btnLogout = document.getElementById("logout");
+let messageKey="";
 
 // Get the modal
 const modal = document.getElementById("myModal");
@@ -76,7 +77,7 @@ const logoutUser = () => {
 firebase.auth().onAuthStateChanged(user =>{
   if (user){
     console.log(user);
-    console.log("Has iniciado sesion");
+    console.log("Has iniciado sesion " + user.email);
     btnLogin.style.display = "none";
     btnRegister.style.display = "none";
   } else {
@@ -94,22 +95,49 @@ btnLogout.addEventListener("click", logoutUser);
 
 
 //Agregar Mensajes en Firebase
-const DBMessage = () => {
-    const userMessage = document.getElementById("comentarios").value;
-    console.log(userMessage);
-    db.ref('mensajes').push({
-      mensaje : userMessage
+const addMessage = () => {
+    const newMessage = document.getElementById("comentarios").value;
+    let messageBD = db.ref('mensajes').push({
+      mensaje : newMessage
     });
+    key = messageBD.key;
     document.getElementById("comentarios").value= '';
  };
- document.getElementById("btnmessage").addEventListener("click", DBMessage);
 
- //Mostrar Datos en Pantalla HTML
- const ready = () => {
+ document.getElementById("btnmessage").addEventListener("click", addMessage);
+
+ //Mostrar Datos en Pantalla HTML de Firebase
+ const readyAdd = () => {
    db.ref('mensajes').on('child_added', function(data){
     console.log(data.val());
-    document.getElementById("chat").innerHTML += " " + `<p>${data.val().mensaje}</p> <br/>`;
+    messageKey = data.key;
+    console.log("La clave del mensaje es "+ messageKey);
+    document.getElementById("chat").innerHTML += 
+      " " +
+       `<p>${data.val().mensaje} </p>
+        <button id="btnDelete" class="boton">Eliminar</button>
+        </br>
+        </br>`;
+        document.getElementById("btnDelete").addEventListener("click", function(){
+          deleteMessage(messageKey);
+         });
    });
  };
 
- document.addEventListener('DOMContentLoaded', ready);
+ document.addEventListener('DOMContentLoaded', readyAdd);
+  
+
+  //Eliminar mensaje en Firebase
+  const deleteMessage = (keyMessage) => {
+    let clave = keyMessage;
+    //db.ref('mensajes/'+ keyMessage).remove();
+      console.log("Mensaje a borrar de clave "+ clave);
+    //location.reload();
+   };
+
+   //Eliminar Datos en Pantalla HTML
+   /*const readyDelete = () => {
+    db.ref('mensajes/' + messageKey).on('child_removed', function(data){
+     console.log(data.val() + " Ha eliminado comentario");
+    });
+   };*/
