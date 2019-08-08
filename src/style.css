@@ -11,10 +11,10 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 90%;
 }
 
-/* Add a hover effect for buttons */
+/* Add a hover effect for buttons*/
 button:hover {
   opacity: 0.8;
 }
@@ -90,14 +90,17 @@ h1 {
 }
 
 .boton{
-  float: right;
-  margin-right: 70px;
+  /*float: right;*/
+  border-radius: 40px;
+  margin-right: 50px;
+  width: 20%;
 }
 
 #comentarios{
-  border: 2px solid rgb(81, 68, 202);
+  border: 5px solid rgb(81, 68, 202);
   border-radius: 60px;
-  margin-left: 60px;
+  margin-left: 10px;
+  width: 90%;
 }
 
 img{

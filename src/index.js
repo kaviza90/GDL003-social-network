@@ -5,6 +5,7 @@ const txtEmail = document.getElementById("userEmail");
 const txtPassword = document.getElementById("userPassword");
 const btnLogin = document.getElementById("login");
 const btnLogout = document.getElementById("logout");
+//let messageKey="";
 
 // Get the modal
 const modal = document.getElementById("myModal");
@@ -76,7 +77,7 @@ const logoutUser = () => {
 firebase.auth().onAuthStateChanged(user =>{
   if (user){
     console.log(user);
-    console.log("Has iniciado sesion");
+    console.log("Has iniciado sesion " + user.email);
     btnLogin.style.display = "none";
     btnRegister.style.display = "none";
   } else {
@@ -94,22 +95,60 @@ btnLogout.addEventListener("click", logoutUser);
 
 
 //Agregar Mensajes en Firebase
-const DBMessage = () => {
-    const userMessage = document.getElementById("comentarios").value;
-    console.log(userMessage);
-    db.ref('mensajes').push({
-      mensaje : userMessage
-    });
-    document.getElementById("comentarios").value= '';
+const addMessage = () => {
+    //let date = new Date();
+    //let currentDate = date.getTime;
+    const newMessage = document.getElementById("comentarios").value;
+    if (newMessage.length==0){          //Si no existe nada en comentarios
+      console.log("Empty Fields");
+    }else{
+      let messageBD = db.ref('mensajes').push({
+      mensaje : newMessage
+     })
+     key = messageBD.key;
+     document.getElementById("comentarios").value= '';
+    };
  };
- document.getElementById("btnmessage").addEventListener("click", DBMessage);
 
- //Mostrar Datos en Pantalla HTML
- const ready = () => {
+ document.getElementById("btnmessage").addEventListener("click", addMessage);
+
+ //Mostrar Datos en Pantalla HTML de Firebase
+ const readyAdd = () => {
    db.ref('mensajes').on('child_added', function(data){
     console.log(data.val());
-    document.getElementById("chat").innerHTML += " " + `<p>${data.val().mensaje}</p> <br/>`;
+    let messageKey = data.key;
+    let date = Date();
+    console.log("La clave del mensaje es "+ messageKey);
+    document.getElementById("chat").innerHTML += 
+      " " +
+       `<p> ${date}
+          <input type="text" class="text" id="text${data.key}" value="${data.val().mensaje}" disabled>
+          <button id="btnEdit${data.key}" onclick="editMessage('${messageKey}','${data.val().mensaje}')" class="boton">Editar</button>
+        </p>`;
+    /*document.getElementById("btnEdit").addEventListener("click", function(){
+      editMessage(messageKey);
+    });*/
    });
  };
 
- document.addEventListener('DOMContentLoaded', ready);
+ document.addEventListener('DOMContentLoaded', readyAdd);
+  
+
+  //Eliminar mensaje en Firebase
+ const editMessage = (keyMessage) => {
+    document.getElementById("text"+ keyMessage).disabled = false;
+    let messageEdit = document.getElementById("text"+ keyMessage).value;
+    db.ref('mensajes/'+ keyMessage).update({
+      mensaje : messageEdit
+     })
+    // console.log("Mensaje editado "+ messageEdit);
+    console.log("Mensaje editado:" + keyMessage);
+    //location.reload();
+ };
+
+   //Eliminar Datos en Pantalla HTML
+   /*const readyEdit = () => {
+    db.ref('mensajes/' + messageKey).on('child_update', function(data){
+     console.log(data.val() + " Ha eliminado comentario");
+    });
+   };*/
