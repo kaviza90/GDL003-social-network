@@ -122,8 +122,8 @@ const addMessage = () => {
     document.getElementById("chat").innerHTML += 
       " " +
        `<p> ${date}
-          <input type="text" id="text${data.key}" value="${data.val().mensaje}" disabled>
-          <button id="btnEdit" onclick="editMessage('${messageKey}')" class="boton">Editar</button>
+          <input type="text" class="text" id="text${data.key}" value="${data.val().mensaje}" disabled>
+          <button id="btnEdit${data.key}" onclick="editMessage('${messageKey}','${data.val().mensaje}')" class="boton">Editar</button>
         </p>`;
     /*document.getElementById("btnEdit").addEventListener("click", function(){
       editMessage(messageKey);
@@ -136,15 +136,14 @@ const addMessage = () => {
 
   //Eliminar mensaje en Firebase
  const editMessage = (keyMessage) => {
-    let clave = keyMessage;
-   /*document.getElementById("text"+ keyMessage).disabled = false;
-    const messageEdit = document.getElementById("text"+ keyMessage).value
+    document.getElementById("text"+ keyMessage).disabled = false;
+    let messageEdit = document.getElementById("text"+ keyMessage).value;
     db.ref('mensajes/'+ keyMessage).update({
       mensaje : messageEdit
-     })*/
+     })
     // console.log("Mensaje editado "+ messageEdit);
-    console.log("Mensaje a editar:" + clave);
-     //location.reload();
+    console.log("Mensaje editado:" + keyMessage);
+    //location.reload();
  };
 
    //Eliminar Datos en Pantalla HTML
