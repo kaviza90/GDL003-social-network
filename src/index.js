@@ -1,18 +1,3 @@
-const btnHeart = document.getElementById("heartButton");
-
-btnHeart.addEventListener("click", () => {
-  alert("Este es un boton de me gusta");
-});
-<!-- Load Facebook SDK for JavaScript -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 //Add event listener to the register button on modal
 const btnRegister = document.getElementById("register");
 //Get user information
@@ -30,69 +15,63 @@ const btn = document.getElementById("registerUser");
 const span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
-  modal.style.display = "block";
+ modal.style.display = "block";
 };
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+ modal.style.display = "none";
 };
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+ if (event.target == modal) {
+   modal.style.display = "none";
+ }
 };
 
 //Function Login
 const loginUser = () => {
-  const email = txtEmail.value;
-  const password = txtPassword.value;
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(function() {
-      console.log("Sesion iniciada");
-    })
-    .catch(function(error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      //console.log("Necesitas Registrarte primero");
-      console.log(errorMessage);
-      console.log(errorCode);
-    });
-};
+ const email = txtEmail.value;
+ const password = txtPassword.value;
+ firebase.auth().signInWithEmailAndPassword(email, password)
+ .then(function() {
+   console.log("Sesion iniciada");
+ })
+ .catch(function(error) {
+   const errorCode = error.code;
+   const errorMessage = error.message;
+   //console.log("Necesitas Registrarte primero");
+   console.log(errorMessage);
+   console.log(errorCode);
+ });
+}
 
 /* Register if the user is new. */
 const RegisterNew = () => {
-  const email = txtEmail.value;
-  const password = txtPassword.value;
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      console.log("Registro exitoso");
-    })
-    .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      console.log(errorCode);
-    });
-};
+ const email = txtEmail.value;
+ const password = txtPassword.value;
+ firebase.auth().createUserWithEmailAndPassword(email, password)
+ .then(() => {
+   console.log("Registro exitoso");
+ })
+ .catch(error => {
+   const errorCode = error.code;
+   const errorMessage = error.message;
+   console.log(errorMessage);
+   console.log(errorCode);
+ });
+}
 
 //Logout Cerrar sesión de un usuario
 const logoutUser = () => {
-  firebase
-    .auth()
-    .signOut()
-    .then(function() {
-      // Sign-out successful.
-      console.log("logout");
-    })
-    .catch(function(error) {
-      console.log("an error ocurred");
-    });
-};
+ firebase.auth().signOut()
+ .then(function() {
+   // Sign-out successful.
+   console.log("logout");
+ })
+ .catch(function(error) {
+   console.log("an error ocurred");
+ });
+}
 
 //Detectar si ya esta Logeado
 firebase.auth().onAuthStateChanged(user =>{
@@ -114,6 +93,7 @@ btnRegister.addEventListener("click", RegisterNew);
 btnLogin.addEventListener("click", loginUser);
 //LogOut
 btnLogout.addEventListener("click", logoutUser);
+
 
 //Agregar Mensajes en Firebase
 const addMessage = () => {
@@ -201,4 +181,3 @@ const addMessage = () => {
      console.log(data.val() + " Ha editado la clave" + messageKey);
     });
    };*/
-
