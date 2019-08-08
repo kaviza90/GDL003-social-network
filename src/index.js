@@ -5,7 +5,7 @@ const txtEmail = document.getElementById("userEmail");
 const txtPassword = document.getElementById("userPassword");
 const btnLogin = document.getElementById("login");
 const btnLogout = document.getElementById("logout");
-//let messageKey="";
+let messageKey="";
 
 // Get the modal
 const modal = document.getElementById("myModal");
@@ -76,8 +76,9 @@ const logoutUser = () => {
 //Detectar si ya esta Logeado
 firebase.auth().onAuthStateChanged(user =>{
   if (user){
-    console.log(user);
     console.log("Has iniciado sesion " + user.email);
+    console.log("Has iniciado sesion");
+    
     btnLogin.style.display = "none";
     btnRegister.style.display = "none";
   } else {
@@ -124,15 +125,31 @@ const addMessage = () => {
        `<p> ${date}
           <input type="text" class="text" id="text${data.key}" value="${data.val().mensaje}" disabled>
           <button id="btnEdit${data.key}" onclick="editMessage('${messageKey}','${data.val().mensaje}')" class="boton">Editar</button>
+          <button class="boton" onClick="deleteMessage('${data.key}')">Eliminar</button>
         </p>`;
     /*document.getElementById("btnEdit").addEventListener("click", function(){
       editMessage(messageKey);
     });*/
    });
+   
  };
 
  document.addEventListener('DOMContentLoaded', readyAdd);
-  
+
+  //Eliminar mensaje en Firebase
+  const deleteMessage = (keyMessage) => {
+    let clave = keyMessage;
+    db.ref('mensajes/'+ keyMessage).remove();
+    console.log("Mensaje a borrar de clave "+ clave);
+    location.reload();
+   };
+
+   //Eliminar Datos en Pantalla HTML
+   const readyDelete = () => {
+    db.ref('mensajes/' + messageKey).on('child_removed', function(data){
+     console.log(data.val() + " Ha eliminado comentario");
+    });
+   }; 
 
   //Eliminar mensaje en Firebase
  const editMessage = (keyMessage) => {
@@ -146,9 +163,3 @@ const addMessage = () => {
     //location.reload();
  };
 
-   //Eliminar Datos en Pantalla HTML
-   /*const readyEdit = () => {
-    db.ref('mensajes/' + messageKey).on('child_update', function(data){
-     console.log(data.val() + " Ha eliminado comentario");
-    });
-   };*/
