@@ -124,7 +124,7 @@ const addMessage = () => {
       " " +
        `<p> ${date}
           <input type="text" class="text" id="text${data.key}" value="${data.val().mensaje}" disabled>
-          <button id="btnEdit${data.key}" onclick="editMessage('${messageKey}','${data.val().mensaje}')" class="boton">Editar</button>
+          <button id="btnEdit${data.key}" onclick="editMessage('${messageKey}')" class="boton">Editar</button>
           <button class="boton" onClick="deleteMessage('${data.key}')">Eliminar</button>
         </p>`;
     /*document.getElementById("btnEdit").addEventListener("click", function(){
@@ -151,7 +151,7 @@ const addMessage = () => {
     });
    }; 
 
-  //Eliminar mensaje en Firebase
+  //Editar mensaje en Firebase
  const editMessage = (keyMessage) => {
     document.getElementById("text"+ keyMessage).disabled = false;
     let editBtn = document.getElementById("btnEdit"+ keyMessage);
@@ -167,6 +167,7 @@ const addMessage = () => {
          console.log("Key actualizado:" + keyMessage);
          editBtn.innerHTML = 'Editar';
          document.getElementById("text"+ keyMessage).disabled = true;
+         //location.reload();
       })
       .catch(function(error){
          console.error("Error updating document ", error);
@@ -174,3 +175,9 @@ const addMessage = () => {
      }
  };
 
+ //Eliminar Datos en Pantalla HTML
+  /* const readyEdit = () => {
+    db.ref('mensajes/' + messageKey).on('child_update', function(data){
+     console.log(data.val() + " Ha editado la clave" + messageKey);
+    });
+   };*/
