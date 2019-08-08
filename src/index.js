@@ -154,12 +154,23 @@ const addMessage = () => {
   //Eliminar mensaje en Firebase
  const editMessage = (keyMessage) => {
     document.getElementById("text"+ keyMessage).disabled = false;
-    let messageEdit = document.getElementById("text"+ keyMessage).value;
-    db.ref('mensajes/'+ keyMessage).update({
-      mensaje : messageEdit
-     })
-    // console.log("Mensaje editado "+ messageEdit);
-    console.log("Mensaje editado:" + keyMessage);
-    //location.reload();
+    let editBtn = document.getElementById("btnEdit"+ keyMessage);
+    editBtn.innerHTML = "Guardar";
+        
+     editBtn.onclick = function (){
+       let messageEdit = document.getElementById("text"+ keyMessage).value;
+       return db.ref('mensajes/'+ keyMessage).update({
+         mensaje : messageEdit
+       })
+      .then(function(){
+         console.log("Mensaje actualizado "+ messageEdit);
+         console.log("Key actualizado:" + keyMessage);
+         editBtn.innerHTML = 'Editar';
+         document.getElementById("text"+ keyMessage).disabled = true;
+      })
+      .catch(function(error){
+         console.error("Error updating document ", error);
+      });
+     }
  };
 
