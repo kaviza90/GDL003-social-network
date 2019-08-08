@@ -11,7 +11,7 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 90%;
 }
 
 /* Add a hover effect for buttons */
@@ -91,13 +91,16 @@ h1 {
 
 .boton{
   float: right;
+  border-radius: 40px;
   margin-right: 70px;
+  width: 10%;
 }
 
 #comentarios{
-  border: 2px solid rgb(81, 68, 202);
+  border: 5px solid rgb(81, 68, 202);
   border-radius: 60px;
-  margin-left: 60px;
+  margin-left: 10px;
+  width: 90%;
 }
 
 img{
@@ -114,7 +117,7 @@ img{
   top: 0;
   width: 100%; /* Full width */
   height: 80%; /* Full height */
-  overflow: visible; /* Enable scroll if needed */
+  overflow: scroll; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
