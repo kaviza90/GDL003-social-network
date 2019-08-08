@@ -9,6 +9,7 @@
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
    <link rel="stylesheet" href="style.css" />
    <title>Red Sorora</title>
  </head>
@@ -58,6 +59,7 @@
         </div>
         <textarea id="comentarios" rows="10" cols="150"></textarea>
         <!--<input type="text" id="comentarios">-->
+  <p>Nombre: <input type=""text" id="nombreusuario" value=" "></p>
         <button id="btnmessage">Comentar</button>
       </div>
     </div>
@@ -65,8 +67,19 @@
 
    <div id=chat>
    </div>
-   <input type="image" src="heart.png" id= "heartButton" style=" width: 20px; height: 20px;" >
+   <input type="image" src="img/heart.png" id= "heartButton" style=" width: 20px; height: 20px;" >
   
+  <!-- Your like button code -->
+  <div class="fb-like" 
+    data-href="https://developers.facebook.com/docs/plugins" 
+    data-layout="standard" 
+    data-action="like" 
+    data-show-faces="true">
+  </div>
+  <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v4.0&appId=341162740124419&autoLogAppEvents=1"></script>
+<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+
    <!-- The Modal -->
    <div id="myModal" class="modal">
      <!-- Modal content -->

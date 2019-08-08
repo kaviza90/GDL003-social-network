@@ -1,8 +1,17 @@
 const btnHeart = document.getElementById("heartButton");
 
 btnHeart.addEventListener("click", () => {
-  alert("Este es un boton de corazón");
+  alert("Este es un boton de me gusta");
 });
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 //Add event listener to the register button on modal
 const btnRegister = document.getElementById("register");
@@ -107,9 +116,11 @@ btnLogout.addEventListener("click", logoutUser);
 //Agregar Mensajes en Firebase
 const DBMessage = () => {
   const userMessage = document.getElementById("comentarios").value;
+  const userName = document.getElementById("nombresuario").value;
   console.log(userMessage);
   db.ref("mensajes").push({
-    mensaje: userMessage
+    mensaje: userMessage,
+    name: userName
   });
   document.getElementById("comentarios").value = "";
 };
@@ -120,7 +131,9 @@ const ready = () => {
   db.ref("mensajes").on("child_added", function(data) {
     console.log(data.val());
     document.getElementById("chat").innerHTML +=
-      " " + `<p>${data.val().mensaje}</p> <br/>`;
+      " " + `<p>${data.val().name}</p> <br/>`;
+    " " + `<p>${data.val().mensaje}</p> <br/>`;
+    console.log(data.val());
   });
 };
 
