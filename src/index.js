@@ -137,11 +137,11 @@ const addMessage = () => {
   //Eliminar mensaje en Firebase
  const editMessage = (keyMessage) => {
     let clave = keyMessage;
-   document.getElementById("text"+ keyMessage).disabled = false;
+   /*document.getElementById("text"+ keyMessage).disabled = false;
     const messageEdit = document.getElementById("text"+ keyMessage).value
     db.ref('mensajes/'+ keyMessage).update({
       mensaje : messageEdit
-     })
+     })*/
     // console.log("Mensaje editado "+ messageEdit);
     console.log("Mensaje a editar:" + clave);
      //location.reload();
