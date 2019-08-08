@@ -14,7 +14,7 @@ button {
   width: 90%;
 }
 
-/* Add a hover effect for buttons */
+/* Add a hover effect for buttons*/
 button:hover {
   opacity: 0.8;
 }
@@ -90,10 +90,10 @@ h1 {
 }
 
 .boton{
-  float: right;
+  /*float: right;*/
   border-radius: 40px;
-  margin-right: 70px;
-  width: 10%;
+  margin-right: 50px;
+  width: 20%;
 }
 
 #comentarios{

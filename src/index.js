@@ -78,6 +78,7 @@ firebase.auth().onAuthStateChanged(user =>{
   if (user){
     console.log("Has iniciado sesion " + user.email);
     console.log("Has iniciado sesion");
+    
     btnLogin.style.display = "none";
     btnRegister.style.display = "none";
   } else {
@@ -96,25 +97,39 @@ btnLogout.addEventListener("click", logoutUser);
 
 //Agregar Mensajes en Firebase
 const addMessage = () => {
-  const newMessage = document.getElementById("comentarios").value;
-  let messageBD = db.ref('mensajes').push({
-    mensaje : newMessage
-    });
-    key = messageBD.key;
-    document.getElementById("comentarios").value= '';
+    //let date = new Date();
+    //let currentDate = date.getTime;
+    const newMessage = document.getElementById("comentarios").value;
+    if (newMessage.length==0){          //Si no existe nada en comentarios
+      console.log("Empty Fields");
+    }else{
+      let messageBD = db.ref('mensajes').push({
+      mensaje : newMessage
+     })
+     key = messageBD.key;
+     document.getElementById("comentarios").value= '';
+    };
  };
+
  document.getElementById("btnmessage").addEventListener("click", addMessage);
 
  //Mostrar Datos en Pantalla HTML de Firebase
  const readyAdd = () => {
    db.ref('mensajes').on('child_added', function(data){
-    messageKey = data.key;
+    console.log(data.val());
+    let messageKey = data.key;
+    let date = Date();
+    console.log("La clave del mensaje es "+ messageKey);
     document.getElementById("chat").innerHTML += 
       " " +
-       `<p>${data.val().mensaje} </p>
-        <button class="boton" onClick="deleteMessage('${data.key}')">Eliminar</button>
-        </br>
-        </br>`;
+       `<p> ${date}
+          <input type="text" class="text" id="text${data.key}" value="${data.val().mensaje}" disabled>
+          <button id="btnEdit${data.key}" onclick="editMessage('${messageKey}','${data.val().mensaje}')" class="boton">Editar</button>
+          <button class="boton" onClick="deleteMessage('${data.key}')">Eliminar</button>
+        </p>`;
+    /*document.getElementById("btnEdit").addEventListener("click", function(){
+      editMessage(messageKey);
+    });*/
    });
    
  };
@@ -134,4 +149,17 @@ const addMessage = () => {
     db.ref('mensajes/' + messageKey).on('child_removed', function(data){
      console.log(data.val() + " Ha eliminado comentario");
     });
-   };
+   }; 
+
+  //Eliminar mensaje en Firebase
+ const editMessage = (keyMessage) => {
+    document.getElementById("text"+ keyMessage).disabled = false;
+    let messageEdit = document.getElementById("text"+ keyMessage).value;
+    db.ref('mensajes/'+ keyMessage).update({
+      mensaje : messageEdit
+     })
+    // console.log("Mensaje editado "+ messageEdit);
+    console.log("Mensaje editado:" + keyMessage);
+    //location.reload();
+ };
+
