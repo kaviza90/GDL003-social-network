@@ -36,7 +36,6 @@ Nosotras Silvana, Carmen y Karla Viera elegimos una red social feminista.
 
 - ¿Cómo descubrimos las necesidades de los usuarios?
   A partir de una encuesta aplicada en linea y en persona a posibles usuarios.
-  ![imagen](src/img/)
 
 - ¿Qué problema resuelve Red Sorora para estos usuarios?
   Falta de redes sociales donde las personas puedan informarse acerca del feminismo, y además puedan compartir en especial las mujeres situaciones que han atravesado por cuestion de género con el hashtag #Amimepaso

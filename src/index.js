@@ -1,18 +1,3 @@
-const btnHeart = document.getElementById("heartButton");
-
-btnHeart.addEventListener("click", () => {
-  alert("Este es un boton de me gusta");
-});
-<!-- Load Facebook SDK for JavaScript -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 //Add event listener to the register button on modal
 const btnRegister = document.getElementById("register");
 //Get user information
@@ -20,7 +5,7 @@ const txtEmail = document.getElementById("userEmail");
 const txtPassword = document.getElementById("userPassword");
 const btnLogin = document.getElementById("login");
 const btnLogout = document.getElementById("logout");
-let messageKey="";
+let messageKey = "";
 
 // Get the modal
 const modal = document.getElementById("myModal");
@@ -95,11 +80,11 @@ const logoutUser = () => {
 };
 
 //Detectar si ya esta Logeado
-firebase.auth().onAuthStateChanged(user =>{
-  if (user){
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
     console.log("Has iniciado sesion " + user.email);
     console.log("Has iniciado sesion");
-    
+
     btnLogin.style.display = "none";
     btnRegister.style.display = "none";
   } else {
@@ -117,88 +102,97 @@ btnLogout.addEventListener("click", logoutUser);
 
 //Agregar Mensajes en Firebase
 const addMessage = () => {
-    //let date = new Date();
-    //let currentDate = date.getTime;
-    const newMessage = document.getElementById("comentarios").value;
-    if (newMessage.length==0){          //Si no existe nada en comentarios
-      console.log("Empty Fields");
-    }else{
-      let messageBD = db.ref('mensajes').push({
-      mensaje : newMessage
-     })
-     key = messageBD.key;
-     document.getElementById("comentarios").value= '';
-    };
- };
+  //let date = new Date();
+  //let currentDate = date.getTime;
+  const newMessage = document.getElementById("comentarios").value;
+  if (newMessage.length == 0) {
+    //Si no existe nada en comentarios
+    console.log("Empty Fields");
+  } else {
+    let messageBD = db.ref("mensajes").push({
+      mensaje: newMessage
+    });
+    key = messageBD.key;
+    document.getElementById("comentarios").value = "";
+  }
+};
 
- document.getElementById("btnmessage").addEventListener("click", addMessage);
+document.getElementById("btnmessage").addEventListener("click", addMessage);
 
- //Mostrar Datos en Pantalla HTML de Firebase
- const readyAdd = () => {
-   db.ref('mensajes').on('child_added', function(data){
+//Mostrar Datos en Pantalla HTML de Firebase
+const readyAdd = () => {
+  db.ref("mensajes").on("child_added", function(data) {
     console.log(data.val());
     let messageKey = data.key;
     let date = Date();
-    console.log("La clave del mensaje es "+ messageKey);
-    document.getElementById("chat").innerHTML += 
+    console.log("La clave del mensaje es " + messageKey);
+    document.getElementById("chat").innerHTML +=
       " " +
-       `<p> ${date}
-          <input type="text" class="text" id="text${data.key}" value="${data.val().mensaje}" disabled>
-          <button id="btnEdit${data.key}" onclick="editMessage('${messageKey}')" class="boton">Editar</button>
-          <button class="boton" onClick="deleteMessage('${data.key}')">Eliminar</button>
-        </p>`;
+      `<p> ${date}
+       <input type="text" class="text" id="text${data.key}" value="${
+        data.val().mensaje
+      }" disabled>
+       <button id="btnEdit${
+         data.key
+       }" onclick="editMessage('${messageKey}')" class="boton">Editar</button>
+       <button class="boton" onClick="deleteMessage('${
+         data.key
+       }')">Eliminar</button>
+       <input type="image" src="img/heart.png" id= "heartButton" style=" width: 20px; height: 20px;" >
+        </p>
+        </br>`;
     /*document.getElementById("btnEdit").addEventListener("click", function(){
       editMessage(messageKey);
     });*/
-   });
-   
- };
+  });
+};
 
- document.addEventListener('DOMContentLoaded', readyAdd);
+document.addEventListener("DOMContentLoaded", readyAdd);
 
-  //Eliminar mensaje en Firebase
-  const deleteMessage = (keyMessage) => {
-    let clave = keyMessage;
-    db.ref('mensajes/'+ keyMessage).remove();
-    console.log("Mensaje a borrar de clave "+ clave);
-    location.reload();
-   };
+//Eliminar mensaje en Firebase
+const deleteMessage = keyMessage => {
+  let clave = keyMessage;
+  db.ref("mensajes/" + keyMessage).remove();
+  console.log("Mensaje a borrar de clave " + clave);
+  location.reload();
+};
 
-   //Eliminar Datos en Pantalla HTML
-   const readyDelete = () => {
-    db.ref('mensajes/' + messageKey).on('child_removed', function(data){
-     console.log(data.val() + " Ha eliminado comentario");
-    });
-   }; 
+//Eliminar Datos en Pantalla HTML
+const readyDelete = () => {
+  db.ref("mensajes/" + messageKey).on("child_removed", function(data) {
+    console.log(data.val() + " Ha eliminado comentario");
+  });
+};
 
-  //Editar mensaje en Firebase
- const editMessage = (keyMessage) => {
-    document.getElementById("text"+ keyMessage).disabled = false;
-    let editBtn = document.getElementById("btnEdit"+ keyMessage);
-    editBtn.innerHTML = "Guardar";
-        
-     editBtn.onclick = function (){
-       let messageEdit = document.getElementById("text"+ keyMessage).value;
-       return db.ref('mensajes/'+ keyMessage).update({
-         mensaje : messageEdit
-       })
-      .then(function(){
-         console.log("Mensaje actualizado "+ messageEdit);
-         console.log("Key actualizado:" + keyMessage);
-         editBtn.innerHTML = 'Editar';
-         document.getElementById("text"+ keyMessage).disabled = true;
-         //location.reload();
+//Editar mensaje en Firebase
+const editMessage = keyMessage => {
+  document.getElementById("text" + keyMessage).disabled = false;
+  let editBtn = document.getElementById("btnEdit" + keyMessage);
+  editBtn.innerHTML = "Guardar";
+
+  editBtn.onclick = function() {
+    let messageEdit = document.getElementById("text" + keyMessage).value;
+    return db
+      .ref("mensajes/" + keyMessage)
+      .update({
+        mensaje: messageEdit
       })
-      .catch(function(error){
-         console.error("Error updating document ", error);
+      .then(function() {
+        console.log("Mensaje actualizado " + messageEdit);
+        console.log("Key actualizado:" + keyMessage);
+        editBtn.innerHTML = "Editar";
+        document.getElementById("text" + keyMessage).disabled = true;
+        //location.reload();
+      })
+      .catch(function(error) {
+        console.error("Error updating document ", error);
       });
-     }
- };
+  };
+};
 
- //Eliminar Datos en Pantalla HTML
-  /* const readyEdit = () => {
+//Eliminar Datos en Pantalla HTML
+/* const readyEdit = () => {
     db.ref('mensajes/' + messageKey).on('child_update', function(data){
      console.log(data.val() + " Ha editado la clave" + messageKey);
     });
    };*/
-
