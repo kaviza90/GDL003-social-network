@@ -99,8 +99,15 @@ h1 {
 #comentarios{
   border: 5px solid rgb(81, 68, 202);
   border-radius: 60px;
-  margin-left: 10px;
+  margin-left: 80px;
   width: 90%;
+}
+
+#btnmessage{
+  border-radius: 40px;
+  margin-right: 50px;
+  width: 20%;
+  margin-left: 560px;
 }
 
 img{
@@ -146,7 +153,11 @@ img{
   cursor: pointer;
 }
 
+.card.horizontal{
+  background: rgba(245, 222, 243, 0.3);
+}
+
 .card.horizontal .card-image img {
-  width: 50%;
+  width: 60%;
   margin: auto;
 }

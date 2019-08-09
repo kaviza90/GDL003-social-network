@@ -52,6 +52,7 @@ const RegisterNew = () => {
  firebase.auth().createUserWithEmailAndPassword(email, password)
  .then(() => {
    console.log("Registro exitoso");
+   M.toast({html: 'Registro Exitoso!'});
  })
  .catch(error => {
    const errorCode = error.code;
@@ -133,7 +134,7 @@ const addMessage = () => {
    });
    
  };
-
+ 
  document.addEventListener('DOMContentLoaded', readyAdd);
 
   //Eliminar mensaje en Firebase
